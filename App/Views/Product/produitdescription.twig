@@ -1,0 +1,297 @@
+{% extends "base.twig" %}
+{% block title %}{{ enchere.getLot.getSeotitle }} - KingStock{% endblock %}
+{% block description %}{{ enchere.getLot.getSeodesc }}{% endblock %}
+{% block keywords %} {% endblock %}
+{% block body %}
+<main role="main">
+    <section class="banner banner-home">
+        <div class="box-banner">
+        <div class="content-box-banner">
+            <p>{{ enchere.getLot.getNom }}</p>
+        </div>
+        </div>
+    </section>
+    <section class="container-100">
+        <ul class="breadcrumb">
+            <li><a href="/">{{ lang.Accueil }}</a></li>
+            <li><a href="/enchere/now">{{ lang.Enchères }}</a></li>
+            <li><a href="/enchere/desc?id={{ enchere.getId}}">{{ lang.Description }}</a></li>
+            <li><a href="">{{ enchere.lot.getNom }}</a></li>
+        </ul>
+        <h1></h1>
+        {% for row in enchere.getLot.getProduits %}
+            Ce lot contient : <h1>{{ row.getNom }}</h1>
+        <div class="wrapper-description-product">
+            <div class="main-photo-product">
+            <!-- Slideshow container -->
+                <div class="slideshow-container">
+
+                <!-- Full-width images with number and caption text -->
+                {% for photo in row.getPhotos %}
+                <div class="mySlides fade">
+                    <div class="wrapper-img">
+                        <img class="img-adaptive" src="{{base_url(photo)}}" alt="slide1" />
+                    </div>
+                </div>
+                {% endfor %}
+
+                <!-- Next and previous buttons -->
+                <a class="prev" onclick="plusSlides(event)">&#10094;</a>
+                <a class="next" onclick="plusSlides(event)">&#10095;</a>
+
+                <br>
+
+                <!-- The dots/circles -->
+                <div style="text-align:center">
+                    {% for photo in row.getPhotos %}
+                    <span class="dot" onclick="currentSlide(event,{{ loop.index }})"></span>
+                    {% endfor %}
+                </div>
+            </div>
+                <div class="social-medias">
+                    <a target="_blank" href="https://www.facebook.com/sharer.php?u={{ base_url("/enchere/desc?id=")~ enchere.getId }}">
+                        <svg class="icon_social icon-darkblue" version="1.1" x="0px" y="0px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve"><g>
+                                <path d="M38.2,0l-6.5,0c-7.3,0-12,4.8-12,12.3V18h-6.5c-0.6,0-1,0.5-1,1v8.2c0,0.6,0.5,1,1,1h6.5V49c0,0.6,0.5,1,1,1
+                                h8.5c0.6,0,1-0.5,1-1V28.2h7.6c0.6,0,1-0.5,1-1l0-8.2c0-0.3-0.1-0.5-0.3-0.7c-0.2-0.2-0.5-0.3-0.7-0.3h-7.6v-4.8
+                                 c0-2.3,0.6-3.5,3.6-3.5l4.4,0c0.6,0,1-0.5,1-1V1C39.2,0.5,38.8,0,38.2,0z"></path>
+                            </g>
+                        </svg>
+                    </a>
+                    <a target="_blank" href="https://twitter.com/share?url={{ base_url("/enchere/desc?id=")~ enchere.getId }}"><svg class="icon_social icon-lightblue" version="1.1" x="0px" y="0px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve"><g>
+                                <g>
+                                    <path class="st0" d="M50,8.8c-1.8,0.8-3.8,1.4-5.9,1.6c2.1-1.3,3.7-3.3,4.5-5.7c-2,1.2-4.2,2-6.5,2.5c-1.9-2-4.5-3.2-7.5-3.2
+                                    C29,4,24.4,8.6,24.4,14.3c0,0.8,0.1,1.6,0.3,2.3C16.1,16.2,8.5,12.1,3.5,5.9c-0.9,1.5-1.4,3.3-1.4,5.2c0,3.6,1.8,6.7,4.6,8.5
+                                    C5,19.6,3.4,19.1,2,18.3v0.1c0,5,3.5,9.1,8.2,10.1c-0.9,0.2-1.8,0.4-2.7,0.4c-0.7,0-1.3-0.1-1.9-0.2c1.3,4.1,5.1,7,9.6,7.1
+                                    c-3.5,2.7-7.9,4.4-12.7,4.4c-0.8,0-1.6,0-2.4-0.1c4.5,2.9,9.9,4.6,15.7,4.6c18.9,0,29.2-15.6,29.2-29.2l0-1.3 C46.9,12.7,48.6,10.9,50,8.8z"></path>
+                                </g>
+                            </g></svg>
+                    </a>
+                </div>
+        </div>
+
+        <!--Texte produit - onglet-->
+        <div class="container-text-product">
+            <div class="tab-description-product">
+                <button class="tablinks margin-bottom-5" onclick="openTab(0,{{ loop.index -1}})">Description</button>
+                <button class="tablinks margin-bottom-5 margin-left-5" onclick="openTab(1,{{ loop.index -1}})">Détails</button>
+                <button class="tablinks margin-bottom-5 margin-left-5" onclick="openTab(2,{{ loop.index -1}})">Autre</button>
+            </div>
+            <div class="tabcontent" id="1">
+                {{ row.getDescription|raw }}
+            </div>
+            <div class="tabcontent" id="2">
+                {{ row.getDescriptionTech|raw }}
+            </div>
+            <div class="tabcontent" id="3">
+                {{ row.getMisc|raw }}
+            </div>
+            {% if loop.first %}
+            <div class="wrapper-price_cta">
+                <div class="price-product">
+                    Prix :&nbsp;<span>{{ enchere.getPrice }}</span><span>€</span>
+                </div>
+                {% if session.co == true %}
+                    <a href="{{base_url("/enchere?id=")~ enchere.getId}}" class="button button-encherir-description margin-top-5">{{ lang.Enchérir }}</a>
+                {% else %}
+                <a href="{{ base_url("Account/login") }}" class="button button-encherir-description margin-top-5">{{ lang.Se_connecter }}</a>
+
+                {% endif %}
+            </div>
+            {% endif %}
+        </div>
+        </div>
+        {% endfor %}
+    </section>
+    <section class="suggestion-product container-100">
+        <div class="section-title">
+            <h2>AUTRES OFFRE QUI POURRAIENT VOUS INTÉRESSER</h2>
+            <div class="card-wrapper">
+                {% for row in encheres|slice(0, 4) %}
+                    <div class="card">
+                        <div class="inner-card">
+                            <a href="{{base_url("/enchere/desc?id=")~ row.getId}}" class="">
+                                <img src="{{ base_url(row.lot.produits[0].getPhotos[0]) }}" class="img-adaptive">
+                                <div class="card-product-name">{{ row.lot.getNom }}</div>
+
+                            </a>
+                            <div class="price">{{ row.getPrice }} €</div>
+                            <div class="time" finish="{{ row.getDatefin }}">{{ row.getTime }}</div>
+                            <a href="{{base_url("/enchere/desc?id=")~ row.getId}}">
+                                <div class="button light-blue">{{ lang.Voir_ce_lot }}</div>
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <script>
+        // Onglet des descriptions produits
+
+        if(document.querySelectorAll(".container-text-product")) {
+            var arraydesc = document.querySelectorAll(".container-text-product");
+            for(var i=0;i<arraydesc.length;i++) {
+                openTab(0, i);
+            }
+        }
+
+        function openTab(index,a) {
+            // Declare all variables
+            var i, tabcontent, tablinks;
+
+            var b = document.querySelectorAll(".container-text-product");
+
+            // Get all elements with class="tabcontent" and hide them
+            tabcontent =  b[a].querySelectorAll(".tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+
+            // Get all elements with class="tablinks" and remove the class "active"
+            tablinks = b[a].querySelectorAll(".tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+
+            // Show the current tab, and add an "active" class to the button that opened the tab
+            tabcontent[index].style.display = "block";
+            tablinks[index].className += " active";
+        }
+
+        // Carousel description produit
+
+        // Next/previous controls
+        function plusSlides(event) {
+            var type=event.target.className;
+            var container= event.path[2];
+            var slides=container.querySelectorAll(".mySlides");
+            var n = 0;
+            for (i = 0; i < slides.length; i++) {
+                if(slides[i].style.display==="block"){
+                    n=i+1;
+                }
+            }
+            if(type==="next"){
+                n=n+1;
+            }
+            else{
+                n=n-1;
+            }
+            showSlides(event.target.parentNode,n);
+        }
+
+        // Thumbnail image controls
+        function currentSlide(event,n) {
+            console.dir(event);
+            var container= event.path[2];
+            showSlides(container,n);
+        }
+
+        function showSlides(container,n) {
+            var i;
+            var slides = container.querySelectorAll(".mySlides");
+            var dots = container.querySelectorAll(".dot");
+            if (n > slides.length) {n = 1}
+            if (n < 1) {n = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[n-1].style.display = "block";
+            dots[n-1].className += " active";
+        }
+
+        function showSlides1(n,slider) {
+            var i,slideIndex=1;
+            var slides = slider.querySelectorAll(".mySlides");
+            var dots = slider.querySelectorAll(".dot");
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";
+            dots[slideIndex-1].className += " active";
+        }
+
+        //maj prix + time
+        window.onload = function () {
+            var arraytimer = document.querySelectorAll('.time');
+
+            arraytimer.forEach(function(element) {
+                CountDownTimer(element.getAttribute('finish'), element);
+            });
+            majenchere({{ enchere.getId }});
+            var sliders = document.querySelectorAll(".wrapper-description-product");
+            sliders.forEach(function (value) {
+                showSlides1(1,value);
+            });
+        };
+        function majenchere(a){
+            var data = new FormData();
+            data.append('id', a);
+
+            xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange=function()
+            {
+                if (xmlhttp.readyState==4 && xmlhttp.status==200)
+                {
+                    majencheretext(xmlhttp.responseText,a)
+                }
+            }
+            xmlhttp.open("POST","{{ base_url("/Enchere/ajax") }}",true);
+            xmlhttp.send(data);
+        }
+
+        function majencheretext(texte,a){
+            pricediv=document.querySelectorAll(".price-product")
+            pricediv.forEach(function (value) {
+                value.querySelector("span").innerHTML=texte;
+            });
+            setTimeout(function(){majenchere(a);},5000);
+        }
+
+        function CountDownTimer(dt, time)
+        {
+            var end = new Date(dt);
+
+            var _second = 1000;
+            var _minute = _second * 60;
+            var _hour = _minute * 60;
+            var _day = _hour * 24;
+            var timer;
+
+            function showRemaining() {
+                var now = new Date();
+                var distance = end - now;
+                if (distance < 0) {
+
+                    clearInterval(timer);
+                    time.innerHTML = '{{ lang.Fin }}';
+
+                    return;
+                }
+                var days = Math.floor(distance / _day);
+                var hours = Math.floor((distance % _day) / _hour);
+                var minutes = Math.floor((distance % _hour) / _minute);
+                var seconds = Math.floor((distance % _minute) / _second);
+                time.innerHTML="";
+                if (days !== 0) {
+                    time.innerHTML += days + 'j : ';
+                }
+
+                time.innerHTML += hours + 'h : ';
+                time.innerHTML += minutes + 'm : ';
+                time.innerHTML += seconds + 's';
+            }
+
+            timer = setInterval(showRemaining, 1000);
+        }
+    </script>
+</main>
+{% endblock %}

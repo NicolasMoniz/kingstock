@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="{{ session.lang }}">
+
+<head>
+    <meta charset="utf-8"/>
+    <link rel="icon" type="image/png" href="{{ base_url("source/favicon/favicon-admin.png") }}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="description" content="{% block description %}{% endblock %}">
+    <meta name="keywords" content="{% block keywords %}{% endblock %}">
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
+          name='viewport'/>
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" type="text/css"
+          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <!-- CSS Files -->
+    <link href="{{ base_url("source/admin/css/material-dashboard.css") }}" rel="stylesheet"/>
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link href="{{ base_url("source/admin/demo/demo.css") }}" rel="stylesheet"/>
+    <style>.far,.fas{
+            font-family: Font Awesome\ 5 Free;
+        }
+        .fa{
+            font-family: FontAwesome !Important;
+        }</style>
+</head>
+
+<body class="">
+<div class="wrapper ">
+    <div class="sidebar" data-color="purple" data-background-color="white" data-image="{{ base_url("source/images/jungle.jpeg") }}">
+        <!--
+          Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+
+          Tip 2: you can also add an image using data-image tag
+      -->
+        <div class="logo" >
+            <a href="{{ base_url("admin/index/index") }}" style="width: 50%;text-align: center;margin: auto" class="simple-text logo-normal">
+                <svg id="Calque_2" data-name="Calque 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 330.78 211.14"><title>kingstock</title><g style="isolation:isolate"><path d="M91.69,141.11H62.59l-15-32.74-9,12.75v20H13.55V54.47H38.62V90.29l23.9-35.82h23.9L64.54,86.18Z" transform="translate(-4.82 -1)"/><path d="M125.4,54.47v86.64H98.8V54.47Z" transform="translate(-4.82 -1)"/><path d="M214.58,141.11H192.94l-23.73-38.28A145.86,145.86,0,0,1,160,84.94a60.08,60.08,0,0,1,2.1,14.22v42H140.5V54.47h25.14L185.83,86.2A122.12,122.12,0,0,1,195,102.84a125.6,125.6,0,0,1-2-22.73V54.47h21.64Z" transform="translate(-4.82 -1)"/><path d="M304.53,92.55v48.56h-13A51.77,51.77,0,0,0,288,132q-8.06,10.41-23.86,10.41-16.76,0-27.55-11.72T225.82,99q0-19.43,10.44-32.66t31.07-13.24q15.5,0,24.95,7.88t12.25,22.34l-25.77,2.54q-1.9-13.51-11.87-13.52-13.08,0-13.08,24.88,0,15,4.19,19.84a13,13,0,0,0,10.16,4.79,12.18,12.18,0,0,0,8.22-2.92,10.21,10.21,0,0,0,3.46-8H265.49V92.55Z" transform="translate(-4.82 -1)"/></g><g style="isolation:isolate"><path d="M4.82,191.83l19-3.42q2.38,8.06,12.3,8.05c5.15,0,7.72-1.36,7.72-4.1A3.82,3.82,0,0,0,42.06,189a19,19,0,0,0-6.38-2.12q-17.54-3.36-22.51-8.78a18.25,18.25,0,0,1-5-12.75,20,20,0,0,1,7.16-15.68q7.14-6.25,20.58-6.25,20.35,0,26.9,16.35l-16.94,5.13q-2.64-6.69-10.7-6.69c-4.46,0-6.68,1.39-6.68,4.15A3.27,3.27,0,0,0,30,165.26a18.17,18.17,0,0,0,5.86,2q12,2.53,17,4.48a18.31,18.31,0,0,1,8.4,6.66,18.59,18.59,0,0,1,3.37,11.12,19.71,19.71,0,0,1-8.2,16.39q-8.2,6.28-21.54,6.28Q10.54,212.14,4.82,191.83Z" transform="translate(-4.82 -1)"/><path d="M100.62,160.43v50.68H81.24V160.43H67.42v-16h47v16Z" transform="translate(-4.82 -1)"/><path d="M149.06,212.14q-14.06,0-22.92-9.33t-8.87-24.95q0-14.94,8.48-24.68t23.51-9.74q13.91,0,22.68,9.18t8.76,24.51q0,15.87-8.84,25.44T149.06,212.14ZM149,197a7.73,7.73,0,0,0,7.45-4.51q2.26-4.53,2.27-16.53,0-17.39-9.33-17.39-10,0-10,19.83Q139.3,197,149,197Z" transform="translate(-4.82 -1)"/><path d="M226,185.67l18.71,1.13q-1.32,12.25-9.06,18.8t-19,6.54q-13.57,0-21.92-9t-8.35-24.8q0-15.67,7.91-25.29t22.07-9.62q13.23,0,20.33,7.32t8,19.44l-19.1,1q0-6.69-2.56-9.67a7.76,7.76,0,0,0-6-3q-9.67,0-9.67,19.44,0,10.89,2.52,14.79a7.93,7.93,0,0,0,7.05,3.91Q225,196.71,226,185.67Z" transform="translate(-4.82 -1)"/><path d="M312.29,211.11H289.91l-11.52-25.18-6.92,9.8v15.38H252.19V144.46h19.28V172l18.38-27.56h18.39l-16.83,24.4Z" transform="translate(-4.82 -1)"/></g><path d="M281.4,12.6a1,1,0,0,1-.3,1.2,55.28,55.28,0,0,1-11.4,6.7,35.21,35.21,0,0,0,2,7.9,4.74,4.74,0,0,0,5.4,2.9,51.33,51.33,0,0,0,10-3.1,56.26,56.26,0,0,1-1.7-12.4,1.08,1.08,0,0,1,.8-1.1,4.49,4.49,0,0,0,1.1-8.3c-3.7-2.1-8.1,2.3-5.9,6.2Z" transform="translate(-4.82 -1)" style="fill:#fabc50"/><path d="M281.6,22.5c1.4-.8,2.8-1.6,4.3-2.5-.1-1.3-.2-2.7-.3-4a1.08,1.08,0,0,1,.8-1.1,4.49,4.49,0,0,0,1.1-8.3,4.54,4.54,0,0,0-6.2,6.1,1,1,0,0,1-.3,1.2,55.28,55.28,0,0,1-11.4,6.7,35.21,35.21,0,0,0,2,7.9,4.74,4.74,0,0,0,5.4,2.9,2.35,2.35,0,0,0,.8-.2,4.33,4.33,0,0,0-.1-.5,7.58,7.58,0,0,1,3.9-8.2Z" transform="translate(-4.82 -1)" style="fill:#f9af3e"/><path d="M314.4,27.9a1.57,1.57,0,0,1-.5,1.9A52.69,52.69,0,0,1,303.5,36a48.11,48.11,0,0,0,3.9,9.7,4.92,4.92,0,0,0,5.7,2.4,44.09,44.09,0,0,0,7.4-3.3A53.11,53.11,0,0,1,318.6,32a1.42,1.42,0,0,1,.9-1.3,4.5,4.5,0,0,0,1.3-8.3,4.55,4.55,0,0,0-6.3,2,3.92,3.92,0,0,0-.1,3.5Z" transform="translate(-4.82 -1)" style="fill:#fabc50"/><path d="M316.4,37.8c.8-.5,1.7-1,2.5-1.6-.1-1.4-.2-2.8-.3-4.3a1.38,1.38,0,0,1,1-1.3,4.47,4.47,0,0,0,1.2-8.3,4.55,4.55,0,0,0-6.3,2,4.14,4.14,0,0,0-.1,3.6,1.41,1.41,0,0,1-.5,1.8,52.69,52.69,0,0,1-10.4,6.2,48.11,48.11,0,0,0,3.9,9.7,4.92,4.92,0,0,0,5.7,2.4c.6-.2,1.1-.4,1.7-.6l-.9-2.1a5.87,5.87,0,0,1,2.5-7.5Z" transform="translate(-4.82 -1)" style="fill:#f9af3e"/><path d="M267.3,7.8c.1,4.3-2.2,6.8-7.8,19.1-1.3,2.7-7.3,15.2-8.8,18.3L313.2,75c4.7-9.8,10.6-22,15.2-31.6a13,13,0,0,1,3.6-4.7c2.2-1.8,3.3-6.4,1.1-7.4-1.9-.9-4.3,1.7-4.9,4.3-.3,1.2-.1,3-1.9,4.9a47.73,47.73,0,0,1-13,7.1,4.8,4.8,0,0,1-5.7-2.4,50.39,50.39,0,0,1-5.7-21,1.38,1.38,0,0,1,1-1.3,4.52,4.52,0,0,0,1-8.5h0a4.51,4.51,0,0,0-6,6.1,1.21,1.21,0,0,1-.3,1.5,49.08,49.08,0,0,1-20,8.7,4.78,4.78,0,0,1-5.4-2.9c-1.9-4.6-2.5-10.2-2.6-14.6a6.89,6.89,0,0,1,1.9-3.8c2.3-2.1,3-6.3,1-7.3-2.3-.9-5.2,2.8-5.2,5.7Z" transform="translate(-4.82 -1)" style="fill:#fabc50"/><path d="M270.4,21.4a62.17,62.17,0,0,1-.9-8.2,6.89,6.89,0,0,1,1.9-3.8c2.3-2.1,3-6.3,1-7.3-2.2-1-5.1,2.7-5.1,5.6.1,4.3-2.2,6.8-7.8,19.1-1.3,2.7-7.3,15.2-8.8,18.3l6.7,3.2c1.5-3,7.5-15.6,8.8-18.3,1.7-3.6,3.1-6.4,4.2-8.6Z" transform="translate(-4.82 -1)" style="fill:#f9af3e"/><path d="M306,52.3a3.42,3.42,0,0,1,1.6,4.4,3.32,3.32,0,0,1-4.4,1.5,3.42,3.42,0,0,1-1.6-4.4,3.32,3.32,0,0,1,4.4-1.5Z" transform="translate(-4.82 -1)" style="fill:#ea527c"/><path d="M304.5,55.5a3.48,3.48,0,0,1,1.4-3,3.23,3.23,0,0,0-1.7-.3,3.26,3.26,0,1,0,.5,6.5,3.14,3.14,0,0,0,1.6-.6,3.2,3.2,0,0,1-1.8-2.6Z" transform="translate(-4.82 -1)" style="fill:#e94374"/><path d="M290.5,42.3c2.5,1.2,3.4,4.6,2,7.6s-4.6,4.4-7.1,3.2-3.4-4.6-2-7.6,4.6-4.4,7.1-3.2Z" transform="translate(-4.82 -1)" style="fill:#ea527c"/><path d="M289.1,53c-2.5-1.2-3.4-4.6-2-7.6a6.63,6.63,0,0,1,3.2-3.2c-2.5-1.1-5.6.4-7,3.3s-.6,6.4,2,7.6a4.81,4.81,0,0,0,3.9,0c0-.1,0-.1-.1-.1Z" transform="translate(-4.82 -1)" style="fill:#e94374"/><path d="M313.4,74.2c-7-3.3-55.3-26.3-62.1-29.6a2,2,0,0,0-2.7,1.1,2.15,2.15,0,0,0,.8,2.8c7,3.3,55.3,26.3,62.1,29.6a2,2,0,0,0,2.7-1.1,2,2,0,0,0-.8-2.8Z" transform="translate(-4.82 -1)" style="fill:#fabc4f"/><path d="M255.1,48.8a2,2,0,0,1,2.7-1.1c-3.1-1.5-5.5-2.6-6.6-3.1a2,2,0,0,0-2.7,1.1,2.15,2.15,0,0,0,.8,2.8c1.2.6,3.5,1.7,6.6,3.1a2.15,2.15,0,0,1-.8-2.8Z" transform="translate(-4.82 -1)" style="fill:#f9af3d"/><path d="M272.5,36.6a3.42,3.42,0,0,1,1.6,4.4,3.32,3.32,0,0,1-4.4,1.5,3.42,3.42,0,0,1-1.6-4.4,3.32,3.32,0,0,1,4.4-1.5Z" transform="translate(-4.82 -1)" style="fill:#ea527c"/><path d="M271.1,39.6a3.48,3.48,0,0,1,1.4-3,3.23,3.23,0,0,0-1.7-.3,3.26,3.26,0,1,0,.5,6.5,3.14,3.14,0,0,0,1.6-.6,3,3,0,0,1-1.8-2.6Z" transform="translate(-4.82 -1)" style="fill:#e94374"/><path d="M306.5,56.4a2.17,2.17,0,1,1-1-2.9,2.19,2.19,0,0,1,1,2.9Zm-5.9-2.8a4.35,4.35,0,0,0,2.1,5.8,4.5,4.5,0,0,0,5.9-2.1,4.27,4.27,0,0,0-2.1-5.8,4.43,4.43,0,0,0-5.9,2.1Z" transform="translate(-4.82 -1)" style="fill:#010202"/><path d="M291.5,49.4c-1.2,2.4-3.7,3.6-5.7,2.7s-2.6-3.7-1.4-6.1,3.7-3.6,5.7-2.7,2.6,3.6,1.4,6.1ZM282.4,45c-1.7,3.5-.6,7.6,2.5,9s6.9-.2,8.6-3.7.6-7.6-2.5-9-6.9.2-8.6,3.7Z" transform="translate(-4.82 -1)" style="fill:#020304"/><path d="M270.1,41.5a2.17,2.17,0,1,1,2.9-1,2.08,2.08,0,0,1-2.9,1Zm2.9-5.9a4.5,4.5,0,0,0-5.9,2.1,4.27,4.27,0,0,0,2.1,5.8,4.5,4.5,0,0,0,5.9-2.1,4.41,4.41,0,0,0-2.1-5.8Z" transform="translate(-4.82 -1)" style="fill:#010202"/><path d="M316.1,45.2c-3.3,1.4-4.4,1.6-5.8.9a4.39,4.39,0,0,1-2-2.3,45.57,45.57,0,0,1-3.2-7.9,48.3,48.3,0,0,0,9.4-5.3,2.63,2.63,0,0,0,.9-3.2,3.46,3.46,0,0,1,4.9-4.2,3.39,3.39,0,0,1-1,6.3,2.28,2.28,0,0,0-1.8,2.4,51.27,51.27,0,0,0,2,11.6,27,27,0,0,1-3.4,1.7Zm15.3-7.5a14.27,14.27,0,0,0-3.9,5.1l-2.9,6.1a1.12,1.12,0,0,0,2,1l2.9-6.1c2.2-4.5,3.7-3.7,5.3-6.9,1.4-2.8.9-5.8-1-6.7-2.6-1.2-5.4,1.7-6.3,4.5-.6,1.7-.1,3.2-1.7,4.8-1.2.9-2.7,1.9-4.3,2.9a48.12,48.12,0,0,1-1.8-10.5c0-.1,0-.1.1-.1a5.58,5.58,0,0,0,1.6-10.3,5.64,5.64,0,0,0-8,6.9.48.48,0,0,1-.2.6,46.35,46.35,0,0,1-8.7,4.9,54.59,54.59,0,0,1-1.5-9.8c0-.1.1-.1.1-.2a5.48,5.48,0,0,0,4.1-7.3,5.65,5.65,0,0,0-7.2-3.4,5.55,5.55,0,0,0-3.1,7.9v.1a47.22,47.22,0,0,1-8.7,5.1A45.09,45.09,0,0,1,286.6,16a5.6,5.6,0,1,0-6.3-2.8,45.54,45.54,0,0,1-9.4,5.3c-.2-1.8-.3-3.6-.4-5.1a4.71,4.71,0,0,1,1.6-3c2.8-2.5,3.6-7.7.7-9.1-2.7-1.3-5.6,1.9-6.4,4.7v.1c-.6,2.2.3,3.2-1.6,7L250.3,43.4a3.25,3.25,0,0,0-2.9,1.9,3.17,3.17,0,0,0,1.4,4.3l5.7,2.7a1.12,1.12,0,0,0,1-2l-5.7-2.7a.93.93,0,0,1-.3-1.3,1.08,1.08,0,0,1,1.3-.6l62.1,29.6a.93.93,0,0,1,.3,1.3,1.08,1.08,0,0,1-1.3.6L260.2,52.4a1.12,1.12,0,1,0-1,2L311,79.1a3.26,3.26,0,0,0,4.2-1.6,3.18,3.18,0,0,0-.3-3.4l9.4-19.5a1.12,1.12,0,1,0-2-1l-9.2,19.2L252.6,44,267,14c2.3-4.7.9-5.9,2.1-8.4.9-1.9,2.3-2.7,2.9-2.4.9.4.9,3.4-1.2,5.5a7.3,7.3,0,0,0-2.3,4.4,49.5,49.5,0,0,0,.6,7,38.63,38.63,0,0,0,2.1,8.1,5.93,5.93,0,0,0,6.7,3.6c.3-.1.6-.1,1-.2a1.08,1.08,0,1,0-.5-2.1c-1.2.2-2,.5-3.2-.1a4.31,4.31,0,0,1-2-2,31,31,0,0,1-1.8-6.8,51.09,51.09,0,0,0,10.5-5.8,2,2,0,0,0,.6-2.6,3.42,3.42,0,1,1,3.8,1.7,2.25,2.25,0,0,0-1.7,2.2,51.55,51.55,0,0,0,1.8,11c-1,.4-2.1.8-3.1,1.1a1.11,1.11,0,1,0,.7,2.1,50.45,50.45,0,0,0,14.4-7.4,2.34,2.34,0,0,0,.7-2.9,3.4,3.4,0,1,1,3.7,1.8,2.38,2.38,0,0,0-1.9,2.4,50.32,50.32,0,0,0,5.9,21.5,5.91,5.91,0,0,0,4,3c1.7.4,3,0,5-.8,4.6-1.8,10.7-5.8,11.5-6.7a8.15,8.15,0,0,0,2.1-5.1c.5-2.6,2.6-4.2,3.4-3.8,1,.3.6,3.7-1.4,5.4Z" transform="translate(-4.82 -1)" style="fill:#010202"/></svg>
+            </a>
+        </div>
+        <div class="sidebar-wrapper">
+            <ul class="nav">
+                <li id="dashlink" class="nav-item ">
+                    <a class="nav-link" href="{{ base_url("admin/index/index") }}">
+                        <i class="material-icons">dashboard</i>
+                        <p>Tableau de Bord</p>
+                    </a>
+                </li>
+                <li id="encherelink" class="nav-item ">
+                    <a class="nav-link" href="{{ base_url("admin/enchere/list") }}">
+                        <i class="fas fa-gavel"></i>
+                        <p>Enchères</p>
+                    </a>
+                </li>
+                <li id="ventelink" class="nav-item ">
+                    <a class="nav-link" href="{{ base_url("admin/vente/list") }}">
+                        <i class="fas fa-bolt"></i>
+                        <p>Vente à la Bougie</p>
+                    </a>
+                </li>
+                <li id="commandelink" class="nav-item ">
+                    <a class="nav-link" href="{{ base_url("admin/commandes/list") }}">
+                        <i class="fas fa-shopping-cart"></i>
+                        <p>Commandes</p>
+                    </a>
+                </li>
+                <li id="lotlink" class="nav-item ">
+                    <a class="nav-link" href="{{ base_url("admin/lot/list") }}">
+                        <i class="fas fa-database"></i>
+                        <p>Lots</p>
+                    </a>
+                </li>
+                <li id="productlink" class="nav-item ">
+                    <a class="nav-link" href="{{ base_url("admin/produit/list") }}">
+                        <i class="fas fa-circle"></i>
+                        <p>Produits</p>
+                    </a>
+                </li>
+                <li id="userlink" class="nav-item ">
+                    <a class="nav-link" href="{{ base_url("admin/user/list") }}">
+                        <i class="material-icons">person</i>
+                        <p>Utilisateurs</p>
+                    </a>
+                </li>
+                <li id="actulink" class="nav-item ">
+                    <a class="nav-link" href="{{ base_url("admin/articles/list") }}">
+                        <i class="fas fa-newspaper"></i>
+                        <p>Actualités</p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="{{ base_url("") }}">
+                        <i class="material-icons">arrow_back</i>
+                        <p>Retour Site</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    {% block body %}{% endblock %}
+</div>
+<!--   Core JS Files   -->
+<script src="{{ base_url("source/admin/js/core/jquery.min.js") }}" type="text/javascript"></script>
+<script src="{{ base_url("source/admin/js/core/popper.min.js") }}" type="text/javascript"></script>
+<script src="{{ base_url("source/admin/js/core/bootstrap-material-design.min.js") }}" type="text/javascript"></script>
+<script src="{{ base_url("source/admin/js/plugins/perfect-scrollbar.jquery.min.js") }}"></script>
+<script src="{{ base_url("source/admin/js/plugins/chartist.min.js") }}"></script>
+<!--  Notifications Plugin    -->
+<script src="{{ base_url("source/admin/js/plugins/bootstrap-notify.js") }}"></script>
+<!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+<script src="{{ base_url("source/admin/js/material-dashboard.min.js") }}" type="text/javascript"></script>
+</body>
+
+</html>

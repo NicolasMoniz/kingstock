@@ -1,0 +1,72 @@
+{% extends "base2.twig" %}
+{% block title %}Nouveau Lot{% endblock %}
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+{% block body %}
+    <div class="main-panel">
+        <div class="content" style="margin-top: 0px;">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header card-header-primary">
+                                <h4 class="card-title ">Nouveau Lot</h4>
+                            </div>
+                            <div class="card-body">
+                                <form method="post">
+                                    <div class="form-row">
+                                        <div class="form-group col-md-12">
+                                            <label for="inputEmail4">Nom</label>
+                                            <input type="text" class="form-control" name="nom"
+                                                   placeholder="Titre">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-12">
+                                            <label for="inputEmail4">SEO Title</label>
+                                            <input type="text" class="form-control" name="seo_title"
+                                                   placeholder="Titre">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-12">
+                                            <label for="inputEmail4">SEO Desc</label>
+                                            <input type="text" class="form-control" name="seo_desc"
+                                                   placeholder="Titre">
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div id="duplicater0" class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label for="select">Sélectionner</label>
+                                                <select id="select" class="form-control" name="produits[]">
+                                                    {% for row in produits %}
+                                                        <option value="{{ row.getId }}">{{ row.getNom }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a onclick="duplicate()" class="btn">Ajouter un autre produit</a>
+                                    <div class="form-row">
+                                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var i = 0;
+
+        function duplicate() {
+            var original = document.getElementById('duplicater' + i);
+            var clone = original.cloneNode(true);
+            clone.id = "duplicater" + ++i;
+            original.parentNode.appendChild(clone);
+        }
+    </script>
+{% endblock %}

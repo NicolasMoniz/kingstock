@@ -1,0 +1,19 @@
+{% extends "base.twig" %}
+{% block title %}{{ lang.Ventes_a_la_bougie }}{% endblock %}
+{% block encherir %} {% endblock %}
+{% block keywords %} {% endblock %}
+{% block body %}
+    <main>
+        <section class="banner banner-home" style="background: url({{ base_url(article.photo) }}) no-repeat center;">
+            <div class="box-banner">
+                <div class="content-box-banner">
+                    <p>{{ article.titre }}</p>
+                    <p>{{ article.date|date }}</p>
+                </div>
+            </div>
+        </section>
+        <section class="container-categories">
+                        {{ article.getContenu|raw }}
+        </section>
+    </main>
+{% endblock %}

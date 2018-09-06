@@ -1,0 +1,99 @@
+{% extends "base.twig" %}
+{% block title %}Inscription{% endblock %}
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+{% block body %}
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <main>
+        {% if error != '' %}
+            <div class="error-inscription flex"><p>{{ error| raw }}</p>
+            </div>
+        {% endif %}
+
+        <section class="block_inscription">
+            <h1>INSCRIPTION</h1>
+            <p class="margin-left-20">* informations obligatoires</p>
+            <form class="input_inscription" action="" method="post">
+                <div class="block_inscription_container">
+                    <div class="block_inscription_content border_inscription">
+                        <h2>Informations générales</h2>
+                        <label for="nom_societe">Nom de la société* :</label>
+                        <input type="text" id="nom_societe" class="champ_saisie margin-bottom-10" name="nom_societe"
+                               rows="2" cols="80" value="{{ post.nom_societe }}" placeholder="Saisir nom de la société">
+                        <label for="id_societe">SIRET / D.U.N.S* :</label>
+                        <input type="text" id="id_societe" class="champ_saisie margin-bottom-10" name="id_societe"
+                               rows="2" cols="80" value="{{ post.id_societe }}" placeholder="Saisir SIRET / D.U.N.S" >
+                        <label for="tel_societe">Téléphone* :</label>
+                        <input type="tel" id="tel_societe" class="champ_saisie margin-bottom-10" name="tel_societe"
+                               rows="2" cols="80" value="{{ post.tel_societe }}" placeholder="Saisir numéro de téléphone" >
+                        <label for="telephone_titulaire">Pays* :</label>
+                        <select class="margin-bottom-10" name="pays" id="pays" value="{{ post.pays }}">
+                            <option value="france">France</option>
+                            <option value="royaume-uni">Royaume-Uni</option>
+                            <option value="Allemagne">Allemagne</option>
+                        </select>
+                        <label for="mail_titulaire">Adresse email* :</label>
+                        <input type="email" id="mail_societe" class="champ_saisie margin-bottom-10" name="mail_societe"
+                               rows="2" cols="80" value="{{ post.mail_societe }}" placeholder="Saisir adresse email" >
+                        <label for="mdp_titulaire">Mot de passe* :</label>
+                        <input type="password" id="mdp_societe" class="champ_saisie margin-bottom-10" name="mdp_societe"
+                               rows="2" cols="80" placeholder="Saisir un mot de passe" >
+                        <label for="confirme_mdp">Confirmer mot de passe* :</label>
+                        <input type="password" id="confirme_mdp_titulaire" class="champ_saisie margin-bottom-10"
+                               name="confirme_mdp_titulaire" rows="2" cols="80" placeholder="Confirmer le mot de passe">
+                    </div>
+                    <div class="block_inscription_content border_inscription">
+                        <h2>Adresse de facturation</h2>
+                        <label for="rue_adresse_facturation">Rue* :</label>
+                        <input type="text" id="rue_adresse_facturation" class="champ_saisie margin-bottom-10"
+                               name="rue_adresse_facturation" rows="2" cols="80"
+                               value="{{ post.rue_adresse_facturation }}" placeholder="Numéro, rue, détails" >
+                        <label for="cp_facturation">Code postal* :</label>
+                        <input type="text" id="cp_facturation" class="champ_saisie margin-bottom-10"
+                               name="cp_facturation" rows="2" cols="80" value="{{ post.cp_facturation }}" placeholder="Saisir le code postal"
+                               >
+                        <label for="ville_facturation">Ville* :</label>
+                        <input type="text" id="ville_facturation" class="champ_saisie margin-bottom-10"
+                               name="ville_facturation" rows="2" cols="80" value="{{ post.ville_facturation }}" placeholder="Saisir la ville">
+                        <h2>Adresse de livraison</h2>
+                        <label for="rue_adresse_livraison">Rue* :</label>
+                        <input type="text" id="rue_adresse_livraison" class="champ_saisie margin-bottom-10"
+                               name="rue_adresse_livraison" rows="2" cols="80" value="{{ post.rue_adresse_livraison }}" placeholder="Numéro, rue, détails"
+                               >
+                        <label for="rue_adresse_livraison">Code postal* :</label>
+                        <input type="text" id="cp_livraison" class="champ_saisie margin-bottom-10" name="cp_livraison"
+                               rows="2" cols="80" value="{{ post.cp_livraison }}" placeholder="Saisir le code postal" >
+                        <label for="ville_livraison">Ville* :</label>
+                        <input type="text" id="ville_livraison" class="champ_saisie margin-bottom-10"
+                               name="ville_livraison" rows="2" cols="80" value="{{ post.ville_livraison }}" placeholder="Saisir la ville" >
+                    </div>
+                    <div class="block_inscription_content">
+                        <h2>Informations de paiement</h2>
+                        <label for="iban">IBAN* :</label>
+                        <input type="text" id="ville_facturation" class="champ_saisie margin-bottom-10"
+                               name="iban" rows="2" cols="80" value="{{ post.iban }}" placeholder="Saisir l'IBAN" >
+                        <label for="num_bic">BIC* :</label>
+                        <input type="text" id="ville_facturation" class="champ_saisie margin-bottom-10"
+                               name="num_bic" rows="2" cols="80" value="{{ post.num_bic }}" placeholder="Saisir le BIC" >
+                        <div class="button_container margin-top-25">
+                            <div class="g-recaptcha" data-sitekey="{{ captcha }}" data-theme="light"></div>
+                            <input class="button button_inscription"
+                                   type="submit" name="confirmation_inscription"
+                                   value="ENVOYER"></div>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </main>
+    <script>
+        function inputprinterreur(){
+            var meserreurs = '{{ id_error|raw }}';
+            var inputnames = meserreurs.split(';');
+            for (var i = 0; i < inputnames.length; i++) {
+                console.log(inputnames[i]);
+                document.getElementsByName(inputnames[i])[0].classList.add("error-input");
+            }
+        }
+        inputprinterreur();
+    </script>
+{% endblock %}

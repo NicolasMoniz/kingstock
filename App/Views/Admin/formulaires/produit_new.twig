@@ -1,0 +1,90 @@
+{% extends "base2.twig" %}
+{% block title %}Nouveau Produits{% endblock %}
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+{% block body %}
+    <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=qqdtgw5j6mwz8s2e2gm7xabyqb28ufefaxb3aq60f0gifixl"></script>
+    <script>tinymce.init({selector: 'textarea'});</script>
+    <div class="main-panel">
+        <div class="content" style="margin-top: 0px;">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header card-header-primary">
+                                <h4 class="card-title ">Nouveau Produit</h4>
+                            </div>
+                            <div class="card-body">
+                                <form method="post" enctype="multipart/form-data">
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="inputEmail4">Nom</label>
+                                            <input type="text" class="form-control" name="nom"
+                                                   placeholder="Nom">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label>Code barre</label>
+                                            <input type="text" class="form-control" name="code_bar"
+                                                   placeholder="12765456788545">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputAddress">Prix Achat</label>
+                                        <input type="text" class="form-control" name="prix_achat"
+                                               placeholder="€">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputAddress2">Unite</label>
+                                        <input type="text" class="form-control" name="unite"
+                                               placeholder="Pièces,kg,L,...">
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="inputCity">Fournisseur</label>
+                                            <input type="text" class="form-control" name="fournisseur"
+                                                   placeholder="Fournisseur">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="inputState">Date Achat</label>
+                                            <input type="datetime-local" class="form-control" name="date_achat"
+                                                   placeholder="Date Achat">
+                                        </div>
+                                        <div class="form-group col-md-2">
+                                            <label for="inputZip">Quantite</label>
+                                            <input type="number" class="form-control" name="quantite" placeholder="Qte">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputCity" style="top: -20px">Description</label>
+                                        <textarea class="form-control" name="descripition"></textarea>
+                                    </div>
+                                    <div class="form-group">
+
+                                        <label for="inputState" style="top: -20px">Description Tech</label>
+                                        <textarea class="form-control" name="descripition_tech"></textarea>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputZip" style="top: -20px">Misc</label>
+                                        <textarea class="form-control" name="misc"></textarea>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-12">
+                                            <label for="inputCity">Photos</label>
+                                            <input type="file" class="form-control" id="images" name="images[]"
+                                                   onchange="preview_images();" multiple="">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.querySelector("#productlink").className += "active";
+    </script>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "base.twig" %}
+{% block title %}{{ lang.Ventes_a_la_bougie }}{% endblock %}
+{% block encherir %} {% endblock %}
+{% block keywords %} {% endblock %}
+{% block body %}
+    <main>
+        <section class="banner banner-home">
+            <div class="box-banner">
+                <div class="content-box-banner">
+                    <p>{{ lang.Nosactualites }}</p>
+                </div>
+            </div>
+        </section>
+        <section class="container-categories">
+            <h1 class="align-center"></h1>
+            {% for row in article %}
+            <div class="wrapper_cat_product">
+                <div class="container-cat-img"><img class="img-cat" src="{{base_url(row.getPhoto)}}" alt="test cat"/></div>
+                <div class="container-cat-txt">
+                    <h2>{{ row.getTitre }}</h2>
+                    <div class="container-txt-desc">
+                        {{ row.getContenu|raw }}
+                    </div>
+                </div>
+                <div class="container-cat-button">
+                    <a href="/articles?id={{ row.getId }}"><div class="button light-blue button-cat button-cat-enchere margin-bottom-10">En savoir plus</div></a>
+                </div>
+            </div>
+            {% endfor %}
+        </section>
+
+        <script>
+            // Gère l'affichage des liens actifs du menu
+            document.querySelector('#actualite-link').classList.add('active');
+        </script>
+    </main>
+{% endblock %}

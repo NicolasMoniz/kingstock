@@ -1,0 +1,98 @@
+<page width="100%">
+    <img src="{{ base_url("/source/images/kingstock.png") }}"
+         width="20%; display: block; text-align: center;" class="logo">
+    <h1 style="text-align: right">FACTURE N°<strong>{{ commande.getId }}</strong></h1>
+
+    <p>
+        <strong>KingStock SAS</strong><br>
+        159-161 Boulevard de la Liberté<br>
+        59000 Lille<br>
+        03 20 15 16 77
+    </p>
+    <div style="text-align: right; width:100%;">
+        <p>
+            <strong>{{ commande.getUser.getSociete }}</strong><br>
+            {{ commande.getUser.getAdresseLivraison.getAdresse }}
+            {{ commande.getUser.getAdresseLivraison.getCodePostal~" "~commande.getUser.getAdresseLivraison.getVille }}
+            <br>
+            {{ commande.getUser.getTel }}
+        </p>
+    </div>
+    <br>
+    <br>
+    <table width="100%" style="width: 100%">
+        <tr width="100%" style="width: 100%">
+            <th style="width:160px;">Nom Produit</th>
+            <th style="width:65px;">Quantité</th>
+            <th style="width:65px;">Prix Unitaire HT</th>
+            <th style="width:65px;">TVA</th>
+            <th style="width:65px;">Total HT</th>
+        </tr>
+        {% set totalht=0 %}
+        {% for row in commande.getDetails %}
+            {% set totalht=totalht+row.getPrix*row.getQte %}
+            <tr width="100%" style="width: 100%;">
+                <td style="width:160px;">{{ row.getProduit }}</td>
+                <td style="width:65px;">{{ row.getQte }}</td>
+                <td style="width:65px;">{{ row.getPrix }}</td>
+                <td style="width:65px;">20%</td>
+                <td style="width:65px;">{{ row.getPrix*row.getQte }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <table align="right"  style="text-align: right">
+        <tr>
+            <td><strong>Total HT</strong></td>
+            <td style="text-align: right;">{{ totalht }}</td>
+        </tr>
+        <tr>
+            <td>TVA 20%</td>
+            <td style="text-align: right;">{{ totalht*0.20 }}</td>
+        </tr>
+        <tr>
+            <td><strong>Total TTC</strong></td>
+            <td style="text-align: right;">{{ totalht*1.20 }}</td>
+        </tr>
+    </table>
+
+    <p class="conditions">
+        En votre aimable règlement
+        <br>
+        Et avec nos remerciements.
+        <br><br>
+        Conditions de paiement : paiement à réception de facture, à 15 jours.
+        <br>
+        Aucun escompte consenti pour règlement anticipé.
+        <br>
+        Règlement par virement bancaire.
+        <br><br>
+        En cas de retard de paiement, indemnité forfaitaire pour frais de recouvrement : 40 euros<br> (art.
+        L.4413 et
+        L.4416 code du commerce).
+    </p>
+
+    <br>
+    <br>
+    <p class="bottom-page text-right">
+        KingStock SAS - N° SIRET 80897753200015 RCS METZ<br>
+        159-161 Boulevard de la Liberté, 59000 Lille - 03 20 15 16 77 - {{ base_url("") }}<br>
+    </p>
+    <style>
+        table {
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 15px;
+        }
+
+        th {
+            text-align: left;
+        }
+    </style>
+</page>

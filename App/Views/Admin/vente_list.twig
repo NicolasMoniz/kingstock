@@ -1,0 +1,105 @@
+{% extends "base2.twig" %}
+{% block title %}Lots{% endblock %}
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+{% block body %}
+    <div class="main-panel">
+        <div class="content" style="margin-top: 0px;">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header card-header-primary flex-title">
+                                <h4 class="card-title ">Vente à la Bougie</h4>
+                                <a href="/admin/vente/new"><i class="fas fa-plus"></i></a>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead class=" text-primary">
+                                        <tr>
+                                            <th>
+                                                ID
+                                            </th>
+                                            <th>
+                                                Lot
+                                            </th>
+                                            <th>
+                                                Date debut
+                                            </th>
+                                            <th>
+                                                Date fin
+                                            </th>
+                                            <th>
+                                                Prix
+                                            </th>
+                                            <th>
+                                                Qte
+                                            </th>
+                                            <th>
+                                                Etat
+                                            </th>
+                                            <th>
+                                                Actions
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for row in ventes %}
+                                        <tr>
+                                            <td>
+                                                {{ row.getId }}
+                                            </td>
+                                            <td>
+                                                <a href="/admin/lot/edit?id={{ row.getId }}" rel="tooltip" title="" class="btn btn-primary btn-link btn-sm" data-original-title="Editer">
+                                                    {{ row.getLot.getNom }} <i class="material-icons">edit</i>
+                                                    <div class="ripple-container"></div></a>
+                                            </td>
+                                            <td>
+                                                {{ row.getDatedebut|date("d/m/Y H:i:s") }}
+                                            </td>
+                                            <td>
+                                                {{ row.getDatefin|date("d/m/Y H:i:s") }}
+                                            </td>
+                                            <td class="text-primary">
+                                                {{ row.getPrix }} €
+                                            </td>
+                                            <td>
+                                                {{ row.getQte }}
+                                            </td>
+                                            <td>
+                                                {{ row.getEtat }}
+                                            </td>
+                                            <td class="td-actions text-right">
+                                                {% if(row.getEtat==0) %}
+                                                    <a href="/admin/vente/active?id={{ row.getId }}" rel="tooltip" title="" class="btn btn-primary btn-link btn-sm" data-original-title="Montrer"><i class="material-icons">visibility</i>
+                                                        <div class="ripple-container"></div></a>
+                                                {% else %}
+                                                    <a href="/admin/vente/unactive?id={{ row.getId }}" rel="tooltip" title="" class="btn btn-primary btn-link btn-sm" data-original-title="Cacher">
+                                                        <i class="material-icons">visibility_off</i>
+                                                        <div class="ripple-container"></div></a>
+                                                {% endif %}
+                                                <a href="/admin/vente/edit?id={{ row.getId }}" rel="tooltip" title="" class="btn btn-primary btn-link btn-sm" data-original-title="Editer">
+                                                    <i class="material-icons">edit</i>
+                                                    <div class="ripple-container"></div></a>
+                                                <a href="/admin/vente/remove?id={{ row.getId }}" rel="tooltip" title="" class="btn btn-danger btn-link btn-sm" data-original-title="Supprimer">
+                                                    <i class="material-icons">close</i>
+                                                </a>
+                                            </td>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.querySelector("#ventelink").className+="active";
+    </script>
+{% endblock %}

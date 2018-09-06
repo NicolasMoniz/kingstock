@@ -1,0 +1,81 @@
+ {% extends "base.twig" %} {% block title %}{{ lang.A_venir }}{% endblock %} {% block description %} {% endblock %} {% block keywords %} {% endblock %} {% block body %}
+
+<main>
+
+    <section class="banner banner-home">
+        <div class="box-banner">
+            <div class="content-box-banner">
+                <p>Enchères à venir</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="container-categories">
+        <h1 class="align-center"></h1>
+        {% for row in enchere %}
+            <div class="wrapper_cat_product">
+                <div class="container-cat-img"><img src="{{base_url(row.getLot.produits[0].getPhotos[0])}}" class="img-adaptive"></div>
+                <div class="container-cat-txt">
+                    <h2>{{ row.getLot.getNom }}</h2>
+                    <div class="container-txt-desc">{{ row.getLot.produits[0].getDescription|raw }}</div>
+                    <div class="wrap-price-time-cat">
+                        <span style="margin-bottom: 20px; margin-right: 5px;">Démarre dans :  </span><p class="time"  finish="{{ row.getDatedebut }}"></p>
+                    </div>
+                </div>
+                <div class="container-cat-button">
+                    <a href="{{base_url("enchere/desc?id=") ~ row.getId}}"><div class="button light-blue button-cat button-cat-enchere margin-bottom-10">informations</div></a>
+                </div>
+            </div>
+        {% endfor %}
+
+    </section>
+    <script>function CountDownTimer(dt, time)
+        {
+            var end = new Date(dt);
+
+            var _second = 1000;
+            var _minute = _second * 60;
+            var _hour = _minute * 60;
+            var _day = _hour * 24;
+            var timer;
+
+            function showRemaining() {
+                var now = new Date();
+                var distance = end - now;
+                if (distance < 0) {
+
+                    clearInterval(timer);
+                    time.innerHTML = '{{ lang.Fin }}';
+
+                    return;
+                }
+                var days = Math.floor(distance / _day);
+                var hours = Math.floor((distance % _day) / _hour);
+                var minutes = Math.floor((distance % _hour) / _minute);
+                var seconds = Math.floor((distance % _minute) / _second);
+                time.innerHTML="";
+                if (days !== 0) {
+                    time.innerHTML += days + 'j : ';
+                }
+
+                time.innerHTML += hours + 'h : ';
+                time.innerHTML += minutes + 'm : ';
+                time.innerHTML += seconds + 's';
+            }
+
+            timer = setInterval(showRemaining, 1000);
+        }
+
+        window.onload = function () {
+            var arraytimer = document.querySelectorAll('.time');
+
+            arraytimer.forEach(function(element) {
+                CountDownTimer(element.getAttribute('finish'), element);
+            });
+        };
+
+        // Gère l'affichage des liens actifs du menu
+        document.querySelector('#encheres-soon-link').classList.add('active');</script>
+</main>
+
+{%endblock%}

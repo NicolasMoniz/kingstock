@@ -1,0 +1,76 @@
+{% extends "base2.twig" %}
+{% block title %}Utilisateurs{% endblock %}
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+{% block body %}
+    <div class="main-panel">
+        <div class="content" style="margin-top: 0px;">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card card-plain">
+                            <div class="card-header card-header-primary flex-title">
+                                <h4 class="card-title mt-0">Actualités</h4>
+                                <a href="/admin/articles/new"><i class="fas fa-plus"></i></a>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead class="">
+                                        <tr>
+                                            <th>
+                                                ID
+                                            </th>
+                                            <th>
+                                                Titre
+                                            </th>
+                                            <th>
+                                                Contenu
+                                            </th>
+                                            <th>
+                                                Date
+                                            </th>
+                                            <th>
+                                                Actions
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for row in articles %}
+                                            <tr>
+                                                <td>
+                                                    {{ row.getId }}
+                                                </td>
+                                                <td class="text-primary">
+                                                    {{ row.getTitre }}
+                                                </td>
+                                                <td>
+                                                    {{ row.getContenu }}
+                                                </td>
+                                                <td class="text-primary">
+                                                    {{ row.getDate }}
+                                                </td>
+                                                <td class="td-actions text-right">
+                                                    <a href="/admin/articles/edit?id={{ row.getId }}" rel="tooltip" title="" class="btn btn-primary btn-link btn-sm" data-original-title="Editer">
+                                                        <i class="material-icons">edit</i>
+                                                        <div class="ripple-container"></div></a>
+                                                    <a href="/admin/articles/remove?id={{ row.getId }}" rel="tooltip" title="" class="btn btn-danger btn-link btn-sm" data-original-title="Supprimer">
+                                                        <i class="material-icons">close</i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.querySelector("#actulink").className += "active";
+    </script>
+{% endblock %}

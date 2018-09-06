@@ -1,0 +1,70 @@
+{% extends "base2.twig" %}
+{% block title %}Lots{% endblock %}
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+{% block body %}
+    <div class="main-panel">
+        <div class="content" style="margin-top: 0px;">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header card-header-primary flex-title">
+                                <h4 class="card-title ">Lots</h4>
+                                <a href="/admin/lot/new"><i class="fas fa-plus"></i></a>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead class=" text-primary">
+                                        <tr>
+                                            <th>
+                                                ID
+                                            </th>
+                                            <th>
+                                                Nom
+                                            </th>
+                                            <th>
+                                                Nb produits
+                                            </th>
+                                            <th>
+                                                Actions
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for row in lots %}
+                                        <tr>
+                                            <td>
+                                                {{ row.getId }}
+                                            </td>
+                                            <td class="text-primary">
+                                                {{ row.getNom }}
+                                            </td>
+                                            <td>
+                                                {{ row.Produits|length }}
+                                            </td>
+                                            <td>
+                                                <a href="/admin/lot/edit?id={{ row.getId }}" rel="tooltip" title="" class="btn btn-primary btn-link btn-sm" data-original-title="Editer">
+                                                    <i class="material-icons">edit</i>
+                                                    <div class="ripple-container"></div></a>
+                                                <a href="/admin/lot/remove?id={{ row.getId }}" rel="tooltip" title="" class="btn btn-danger btn-link btn-sm" data-original-title="Supprimer">
+                                                    <i class="material-icons">close</i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.querySelector("#lotlink").className+="active";
+    </script>
+{% endblock %}

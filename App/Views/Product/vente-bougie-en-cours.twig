@@ -1,0 +1,107 @@
+{% extends "base.twig" %}
+{% block title %}{{ lang.Ventes_a_la_bougie }}{% endblock %}
+{% block encherir %} {% endblock %}
+{% block keywords %} {% endblock %}
+{% block body %}
+    <style>
+        .wrapper_cat_product:before{
+            border-right: 5px solid #08a722;
+            border-bottom: 5px solid #08a722;
+        }
+
+        .wrapper_cat_product:after{
+            border-left: 5px solid #08a722;
+            border-top: 5px solid #08a722;
+        }
+    </style>
+
+    <main>
+
+        <section class="banner banner-home">
+            <div class="box-banner">
+                <div class="content-box-banner">
+                    <p>Vente à la bougie en cours</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="container-categories">
+            <h1 class="align-center"></h1>
+
+            {% for row in enchere %}
+                <div class="wrapper_cat_product">
+                    <div class="container-cat-img"><img src="{{base_url(row.getLot.produits[0].getPhotos[0])}}" class="img-adaptive"></div>
+                    <div class="container-cat-txt">
+                        <h2>{{ row.getLot.getNom }}</h2>
+                        <div class="container-txt-desc">{{ row.getLot.produits[0].getDescription|raw }}</div>
+                        <div class="wrap-price-time-cat">
+                            <p><span class="price">{{ row.getPrix }} €</span></p><div class="v-separator-price-cat"></div><p class="time"  finish="{{ row.getDatefin }}">{{ row.getTime }}</p>
+                        </div>
+                    </div>
+                    <div class="container-cat-button">
+                        <a href="{{base_url("vente/desc?id=") ~ row.getId}}"><div class="button light-blue button-cat button-cat-enchere margin-bottom-10">informations</div></a>
+                        {% if session.co == true %}
+                        <a href="{{ base_url("/vente/add?id=")~row.getid}}">
+                            <div class="button button-cat button-cat-enchere">{{ lang.AjouterauPanier }}</div>
+                        </a>
+                        {% else %}
+                        <a href="{{ base_url("Account/login") }}">
+                            <div class="button button-cat">{{ lang.Se_connecter }}</div>
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+
+        </section>
+            <script>function CountDownTimer(dt, time)
+            {
+                var end = new Date(dt);
+
+                var _second = 1000;
+                var _minute = _second * 60;
+                var _hour = _minute * 60;
+                var _day = _hour * 24;
+                var timer;
+
+                function showRemaining() {
+                    var now = new Date();
+                    var distance = end - now;
+                    if (distance < 0) {
+
+                        clearInterval(timer);
+                        time.innerHTML = '{{ lang.Fin }}';
+
+                        return;
+                    }
+                    var days = Math.floor(distance / _day);
+                    var hours = Math.floor((distance % _day) / _hour);
+                    var minutes = Math.floor((distance % _hour) / _minute);
+                    var seconds = Math.floor((distance % _minute) / _second);
+                    time.innerHTML="";
+                    if (days !== 0) {
+                        time.innerHTML += days + 'j : ';
+                    }
+
+                    time.innerHTML += hours + 'h : ';
+                    time.innerHTML += minutes + 'm : ';
+                    time.innerHTML += seconds + 's';
+                }
+
+                timer = setInterval(showRemaining, 1000);
+            }
+
+            window.onload = function () {
+                var arraytimer = document.querySelectorAll('.time');
+
+                arraytimer.forEach(function(element) {
+                    CountDownTimer(element.getAttribute('finish'), element);
+                });
+            };
+            // Gère l'affichage des liens actifs du menu
+            document.querySelector('#ventes-bougie-link').classList.add('active');
+        </script>
+    </main>
+
+
+{% endblock %}

@@ -1,0 +1,87 @@
+body {
+    background: url("jungle.jpg") no-repeat 50% 42%;
+    background-size: 100%;
+    margin: 1rem auto 0;
+}
+
+/* SPINNER 1 */
+.spinner-1:before {
+    content: "";
+    box-sizing: border-box;
+    position: absolute;
+    top: 110px;
+    left: 604px;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    border: 2px solid lightgray;
+    border-top-color: coral;
+    animation: spinner 700ms linear infinite;
+}
+
+@keyframes spinner {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+h1 {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    color: white;
+    font-family: Roboto, sans-serif;
+}
+
+/* SPINNER 2 */
+.spinner-2:before {
+    content: "";
+    box-sizing: border-box;
+    position: absolute;
+    top: 110px;
+    left: 604px;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    border-top-color: coral;
+    border-bottom-color: coral;
+    animation: spinner 700ms ease infinite;
+}
+
+/* SPINNER 3 */
+.spinner-3:before {
+    content: "";
+    box-sizing: border-box;
+    position: absolute;
+    top: 110px;
+    left: 50%;
+    height: 110px;
+    width: 110px;
+    margin-right: -55px;
+    margin-left: -55px;
+    border-radius: 50%;
+    border-top: 2px solid coral;
+    border-right: 2px solid transparent;
+    animation: spinner 700ms linear infinite;
+    background-color: rgba(255,255,255,0.4);
+}
+
+@keyframes Bounce {
+    from {transform:scale(0.5);}
+    to {transform: scale(0.8);}
+}
+
+.img:before {
+    position: absolute;
+    content: '';
+    background: url(courrone.svg) center no-repeat;
+    background-size: 100%;
+    top: 111px;
+    left: 50%;
+    height: 110px;
+    width: 110px;
+    margin-right: -55px;
+    margin-left: -55px;
+    animation: Bounce 0.7s ease-in both alternate infinite;
+}

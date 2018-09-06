@@ -1,0 +1,50 @@
+@font-face {
+  font-family: 'kingstock';
+  src:  url('fonts/kingstock.eot?3nun4d');
+  src:  url('fonts/kingstock.eot?3nun4d#iefix') format('embedded-opentype'),
+    url('fonts/kingstock.ttf?3nun4d') format('truetype'),
+    url('fonts/kingstock.woff?3nun4d') format('woff'),
+    url('fonts/kingstock.svg?3nun4d#kingstock') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.kingstock-icon {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'kingstock' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-arrow-right:before {
+    content: "\e907";
+}
+.icon-home-fill:before {
+    content: "\e906";
+}
+.icon-bougie:before {
+    content: "\e900";
+}
+.icon-enchere:before {
+    content: "\e901";
+}
+.icon-home:before {
+    content: "\e902";
+}
+.icon-close:before {
+    content: "\e903";
+}
+.icon-news:before {
+    content: "\e904";
+}
+.icon-user:before {
+    content: "\e905";
+}

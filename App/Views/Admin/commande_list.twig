@@ -1,0 +1,88 @@
+{% extends "base2.twig" %}
+{% block title %}Commandes{% endblock %}
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+{% block body %}
+    <div class="main-panel">
+        <div class="content" style="margin-top: 0px;">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header card-header-primary">
+                                <h4 class="card-title ">Commandes</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead class=" text-primary">
+                                        <tr>
+                                            <th>
+                                                ID
+                                            </th>
+                                            <th>
+                                                Type
+                                            </th>
+                                            <th>
+                                                Date Reglement
+                                            </th>
+                                            <th>
+                                                Date Achat
+                                            </th>
+                                            <th>
+                                                Societe
+                                            </th>
+                                            <th>
+                                                Actions
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for row in commandes %}
+                                            <tr>
+                                                <td>
+                                                    {{ row.getId }}
+                                                </td>
+                                                <td class="text-primary">
+                                                    {% if  row.getType ==2 %}
+                                                        Enchère
+                                                    {% else %}
+                                                        Vente à la Bougie
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if (row.getDateachat==null) %}
+                                                        {{ row.getDateachat|date("d/m/Y H:i:s") }}
+                                                    {% else %}
+                                                        Règlement non effectué
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {{ row.getDateReglement|date("d/m/Y H:i:s") }}
+
+                                                </td>
+                                                <td class="text-primary">
+                                                    {{ row.getUser.getSociete }}
+                                                </td>
+                                                <td class="td-actions text-right">
+                                                    <a href="{{ base_url("/admin/commandes/facture?id=")~row.getId }}" rel="tooltip" title="" class="btn btn-primary btn-link btn-sm" data-original-title="Facture">
+                                                        <i class="fas fa-file-invoice-dollar"></i>
+                                                    </a>
+                                                </td>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.querySelector("#commandelink").className+="active";
+    </script>
+{% endblock %}

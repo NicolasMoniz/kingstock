@@ -1,0 +1,36 @@
+{% extends "base.twig" %}
+{% block title %}Connexion{% endblock %}
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+{% block body %}
+
+<main>
+    {% if error != '' %}
+        <div class="error-inscription flex"><p>{{ error| raw }}</p>
+        </div>
+    {% endif %}
+    <section class="block_connexion">
+        <h1>CONNEXION</h1>
+        <form class="input_connexion" action="" method="post">
+            <div class="container-100 flex container-responsive">
+                <div class="block_champ_connexion">
+                    <label for="email">Adresse email :</label><br/>
+                    <input class="champ_saisie" type="email" name="mail" value="{{ post.mail }}" placeholder="Saisir adresse email">
+                </div>
+                <div class="block_champ_connexion">
+                    <label for="mdp">Mot de passe :</label><br/>
+                    <input class="champ_saisie margin-auto" type="password" name="mdp" placeholder="Entrer un mot de passe">
+                </div>
+            </div>
+                <div class="container_button_connexion margin-top-20">
+<div class="g-recaptcha1">
+                    <div class="g-recaptcha" data-sitekey="{{ captcha }}" data-theme="light"></div></div>
+                    <input class="button button_connexion margin-bottom-10" type="submit" name="confirmation_inscription" value="Se Connecter">
+                </div>
+            <div class="align-center"><a href="{{ base_url("Account/forgot") }}">Mot de passe Oublié</a> - <a href="{{ base_url("Account/register") }}">Inscription</a>
+            </div>
+        </form>
+    </section>
+</main>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+{% endblock %}

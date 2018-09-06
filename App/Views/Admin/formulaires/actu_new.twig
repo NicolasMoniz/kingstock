@@ -1,0 +1,47 @@
+{% extends "base2.twig" %}
+{% block title %}Nouveau Produits{% endblock %}
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+{% block body %}
+    <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=qqdtgw5j6mwz8s2e2gm7xabyqb28ufefaxb3aq60f0gifixl"></script>
+    <script>tinymce.init({selector: 'textarea'});</script>
+    <div class="main-panel">
+        <div class="content" style="margin-top: 0px;">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header card-header-primary">
+                                <h4 class="card-title ">Nouvelle Actu</h4>
+                            </div>
+                            <div class="card-body">
+                                <form method="post" enctype="multipart/form-data">
+                                    <div class="form-row">
+                                        <div class="form-group col-md-12">
+                                            <label for="inputEmail4">Titre</label>
+                                            <input type="text" class="form-control" name="titre"
+                                                   placeholder="Titre">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputCity" style="top: -20px">Contenu</label>
+                                        <textarea class="form-control" name="contenu"></textarea>
+                                    </div>
+                                    <div class="form-group">
+
+                                        <label for="inputEmail4">Photo</label>
+                                        <input type="file" class="form-control" name="photo"
+                                               placeholder="Nom">
+                                    </div>
+                                    <div class="form-row">
+                                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

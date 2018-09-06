@@ -1,0 +1,7 @@
+.idea/
+.atom/
+.svn
+.DS_Store
+[Tt]humbs.db
+/logs
+/vendor

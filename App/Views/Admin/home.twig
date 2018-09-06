@@ -1,0 +1,168 @@
+{% extends "base2.twig" %}
+{% block title %}Tableau de Bord{% endblock %}
+{% block description %}{% endblock %}
+{% block keywords %}{% endblock %}
+{% block body %}
+    {% set total=0 %}
+    {% for row in commandes %}
+        {% set totalht=0 %}
+        {% for row2 in row.getDetails %}
+            {% set totalht=totalht+row2.getPrix*row2.getQte %}
+        {% endfor %}
+        {% set total=total+totalht %}
+    {% endfor %}
+    {% set verif_user=0 %}
+    {% for row in users %}
+        {% if(row.getEtat==0) %}
+        {% set verif_user=verif_user+1 %}
+        {% endif %}
+    {% endfor %}
+    <div class="main-panel">
+        <div class="content" style="margin: 0">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="card card-stats">
+                            <div class="card-header card-header-success card-header-icon">
+                                <div class="card-icon">
+                                    <i class="material-icons">store</i>
+                                </div>
+                                <p class="card-category">Revenue</p>
+                                <h3 class="card-title">{{ total }}€</h3>
+                            </div>
+                            <div class="card-footer">
+                                <div class="stats">
+                                    <a href="/admin/commandes/list"><i class="fas fa-arrow-right"></i> Commandes</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="card card-stats">
+                            <div class="card-header card-header-primary card-header-icon">
+                                <div class="card-icon">
+                                    <i class="fas fa-gavel"></i>
+                                </div>
+                                <p class="card-category">Enchères en cours</p>
+                                <h3 class="card-title">{{ encheres|length }}</h3>
+                            </div>
+                            <div class="card-footer">
+                                <div class="stats">
+                                    <a href="/admin/enchere/list"><i class="fas fa-arrow-right"></i> Enchères</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="card card-stats">
+                            <div class="card-header card-header-danger card-header-icon">
+                                <div class="card-icon">
+                                    <i class="material-icons">supervised_user_circle</i>
+                                </div>
+                                <p class="card-category">Utilisateurs à vérifier</p>
+                                <h3 class="card-title">{{ verif_user }}</h3>
+                            </div>
+                            <div class="card-footer">
+                                <div class="stats">
+                                    <a href="/admin/user/list"><i class="fas fa-arrow-right"></i> Utilisateurs</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="card card-stats">
+                            <div class="card-header card-header-info card-header-icon">
+                                <div class="card-icon">
+                                    <i class="material-icons">person</i>
+                                </div>
+                                <p class="card-category">Nombre d'Utilisateurs</p>
+                                <h3 class="card-title">{{ users|length }}</h3>
+                            </div>
+                            <div class="card-footer">
+                                <div class="stats">
+                                    <a href="/admin/user/list"><i class="fas fa-arrow-right"></i> Utilisateurs</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12">
+                        <div class="card">
+                            <div class="card-header card-header-primary">
+                                <h4 class="card-title ">Commandes</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead class=" text-primary">
+                                        <tr>
+                                            <th>
+                                                ID
+                                            </th>
+                                            <th>
+                                                Type
+                                            </th>
+                                            <th>
+                                                Date Reglement
+                                            </th>
+                                            <th>
+                                                Date Achat
+                                            </th>
+                                            <th>
+                                                Societe
+                                            </th>
+                                            <th>
+                                                Actions
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for row in commandes %}
+                                            <tr>
+                                                <td>
+                                                    {{ row.getId }}
+                                                </td>
+                                                <td class="text-primary">
+                                                    {% if  row.getType ==2 %}
+                                                        Enchère
+                                                    {% else %}
+                                                        Vente à la Bougie
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if (row.getDateachat==null) %}
+                                                        {{ row.getDateachat|date("d/m/Y H:i:s") }}
+                                                    {% else %}
+                                                        Règlement non effectué
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {{ row.getDateReglement|date("d/m/Y H:i:s") }}
+
+                                                </td>
+                                                <td class="text-primary">
+                                                    {{ row.getUser.getSociete }}
+                                                </td>
+                                                <td class="td-actions text-right">
+                                                    <a href="{{ base_url("/admin/commandes/facture?id=")~row.getId }}" rel="tooltip" title="" class="btn btn-primary btn-link btn-sm" data-original-title="Facture">
+                                                        <i class="fas fa-file-invoice-dollar"></i>
+                                                    </a>
+                                                </td>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.querySelector("#dashlink").className+="active";
+    </script>
+{% endblock %}
